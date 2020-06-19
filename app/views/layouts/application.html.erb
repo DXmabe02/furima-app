@@ -9,6 +9,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="container">
+      <header>
+        <%= render "shared/header"%>
+      </header>
+      <main>
+        <%= yield %>
+      <main>
+      <aside id="app-banner">
+        <%= render "shared/app-banner"%>
+      </aside>
+      <footer>
+        <%= render "shared/app-banner"%>
+      </footer>
+    </div>
   </body>
 </html>
