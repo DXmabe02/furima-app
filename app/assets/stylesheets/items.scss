@@ -1,3 +1,74 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// purchase.html.haml
+.middle-containar {
+  width: 700px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  background-color: #fff;
+}
+.confirm-purchase-details {
+  text-align: center;
+  padding: 10px 50px 30px 50px;
+  margin: 0 auto;
+  &__title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+.group-container {
+  width: 60%;
+  height: 30%;
+  margin: 0 auto;
+  padding: 50px;
+  border-top: 1px solid #f5f5f5;
+
+}
+
+.item-info {
+  display: flex;
+  &__img-box {
+    height: 80px;
+    width: 80px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    &__img {
+      height: 80px;
+      width: 80px;
+    }
+  }
+  &__text {
+    padding-left: 20px;
+    &__name {
+      font-size: 14px;
+    }
+    &__postage-payer {
+      font-size: 12px;
+      margin-left: 150px;
+    }
+    &__price {
+      font-size: 15px;
+      font-weight: bold;
+      margin-left: 8px;
+    }
+    
+  }
+}
+
+
+
+
+
+
+
+.purchase-btn {
+  display: block;
+  width: 100%;
+  line-height: 50px;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #fff;
+  margin: 0 auto;
+  background-color: #3CCACE;
+  border: 0;
+  cursor: pointer;
+}
