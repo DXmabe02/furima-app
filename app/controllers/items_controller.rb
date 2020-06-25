@@ -4,4 +4,9 @@ class ItemsController < ApplicationController
     
   end
   
+  def purchase
+  end
+  
+  def pay
+  end
 end
