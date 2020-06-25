@@ -9,7 +9,7 @@
     .group-container
       .item-info
         .item-info__img-box
-          = image_tag "", class: "item-info__img-box__img", alt: ""
+          = image_tag "#", class: "item-info__img-box__img", alt: "#商品画像"
         .item-info__text
           %P.item-info__text__name
             商品名
@@ -35,8 +35,7 @@
           ************0000
         %p.method-of-payment__date
           有効期限 04/24
-        .method-of-payment__logo
-          VISA
+        = image_tag "#", class: "method-of-payment__logo", alt: "カードロゴ"
     .group-container
       .delivery-address
         %p.delivery-address__title
