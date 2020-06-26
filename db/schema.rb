@@ -68,18 +68,10 @@ ActiveRecord::Schema.define(version: 20200619113051) do
     t.text     "introduction", limit: 65535,             null: false
     t.integer  "price",                                  null: false
     t.integer  "size",                                   null: false
-    t.text     "explanation",  limit: 65535,             null: false
     t.integer  "condition",                  default: 0, null: false
-    t.boolean  "deal_state",                             null: false
     t.integer  "buyer"
-    t.integer  "user_id",                                null: false
-    t.integer  "brand_id",                               null: false
-    t.integer  "category_id",                            null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
-    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
-    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "postage_payers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -155,9 +147,6 @@ ActiveRecord::Schema.define(version: 20200619113051) do
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users"
   add_foreign_key "postage_payers", "items"
   add_foreign_key "preparation_days", "items"
   add_foreign_key "profiles", "users"
