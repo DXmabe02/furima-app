@@ -99,6 +99,15 @@
               -#   %option{value:  "やや傷や汚れあり"} やや傷や汚れあり
               -#   %option{value:  "傷や汚れあり"} 傷や汚れあり
               -#   %option{value:  "全体的に状態が悪い"} 全体的に状態が悪い
+          .item_size_box_square
+            .text_form
+              %a.label
+                商品のサイズ
+              %span.require
+                必須
+            .item_size_box_square_input
+              .item_condition_box_square_input
+                = f.select :size, [['指定なし', 1], ['S', 2],['M', 3], ['XL', 4]], { include_blank: "選択してください"}  
         .shipping_item_box
           %p.text_item_new
             発送について    
