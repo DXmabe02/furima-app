@@ -1,10 +1,26 @@
-.form
-  = form_for @item do |f|
-    -# = f.text_field :name
-    -# = f.text_field :introduction
-    -# = f.text_field :size
-    -# = f.text_field :condition
-    -# = f.text_field :price
+-# .item_shipping_origin_box_square
+-#   .text_form
+-#     %a.label
+-#       発送準備
+-#     %span.require
+-#       必須
+-#   .item_shipping_origin_box_square_input
+-#     = form_for '' do |f|
+-#       = f.collection_select :preparation_day_id, Preparation_day.all, :id, :name, prompt: "選択してください", class: 'input'
+
+.item_shipping_origin_box_square
+  .text_form
+    %a.label
+      発送元の地域
+    %span.require
+      必須
+  .item_shipping_origin_box_square_input
+    = form_for '' do |f|
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+
+
+
+
     -# = f.select :name, ['太郎','二郎'], { include_blank: true, selected: 1 }, { id: "item_id", class: "user_class" }
    
     -# = f.submit '送信'
@@ -129,11 +145,11 @@
                 %span.require
                   必須
               .item_preparation_days_box_square_input
-                %select{name:  "preparation_days"}
-                  %option{value:  ""} 選択してください
-                  %option{value:  "1~2日で発送"} 1~2日で発送
-                  %option{valu:  "2~3日で発送"} 2~3日で発送
-                  %option{value:  "4~7日で発送"} 4~7日で発送
+                -# %select{name:  "preparation_days"}
+                -#   %option{value:  ""} 選択してください
+                -#   %option{value:  "1~2日で発送"} 1~2日で発送
+                -#   %option{valu:  "2~3日で発送"} 2~3日で発送
+                -#   %option{value:  "4~7日で発送"} 4~7日で発送
         .item_price-box
           %a.exhibition-item_price
             価格（¥300〜9,999,999）
