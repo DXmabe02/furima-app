@@ -116,6 +116,16 @@
   padding: 0 160px;
 }  
 
+.require_brand{
+  background: #ddd;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+
 .require{
   background: #ea352d;
   margin: 0 0 0 8px;
@@ -123,7 +133,8 @@
   border-radius: 2px;
   color: #fff;
   font-size: 12px;
-  vertical-align: top;}
+  vertical-align: top;
+}
   
 .label{
   font-size: 14px;

@@ -1,13 +1,3 @@
--# .item_shipping_origin_box_square
--#   .text_form
--#     %a.label
--#       発送準備
--#     %span.require
--#       必須
--#   .item_shipping_origin_box_square_input
--#     = form_for '' do |f|
--#       = f.collection_select :preparation_day_id, Preparation_day.all, :id, :name, prompt: "選択してください", class: 'input'
-
 .item_shipping_origin_box_square
   .text_form
     %a.label
@@ -17,7 +7,6 @@
   .item_shipping_origin_box_square_input
     = form_for @item do |f|
       = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
-      -# = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "input"})
       = f.collection_select :preparation_day_id, PreparationDay.all, :id, :name, prompt: "選択してください", class: 'input'
       = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, prompt: "選択してください", class: 'input'
       = f.text_field :name, class: "input-box_item_name", placeholder: "40文字まで"
@@ -26,9 +15,7 @@
       = f.select :size, [['指定なし', 1], ['XL', 2],['L', 3], ['M', 4], ['S', 5]], { include_blank: "選択してください"}  
       = f.text_field :price, class: "price_input"      
       = f.submit '出品する', class: "submit-btn-red"
-      
     -# = f.select :name, ['太郎','二郎'], { include_blank: true, selected: 1 }, { id: "item_id", class: "user_class" }
-
 .main-containar
   .header-containar
     = link_to "#", class: "header-containar__link" do
@@ -70,7 +57,6 @@
                 必須
             .item_explanation_square__input
               = f.text_area :introduction, class: "input-box_explanation", placeholder: "商品の説明(必須1,000文字以内)(色、素材、重さ、定価、注意点など)商品の説明(必須 1,000文字以内)(色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 "
-              -# (色、素材、重さ、定価、注意点など)例)2010年ごろに1万円商品の説明(必須)(色、素材、重さ、定価、注意点など)
         .item_detail_box
           %p.text_item_bow
             商品の詳細
@@ -92,32 +78,14 @@
             .text_form  
               %a.label
                 ブランド
-              %span.require
-                必須
+              %span.require_brand
+                任意
             .item_brand_box_square_input  
               %select{name: "brand"}
                 %option{value: ""} 選択してください
                 %option{value: "シャネル"} シャネル
                 %option{value: "ヴィトン"} ヴィトン
                 %option{value: "エルメス"} エルメス
-          .item_condition_box_square
-            .text_form
-              %a.label
-                商品の状態
-              %span.require
-                必須
-            .item_condition_box_square_input
-              = f.select :condition, [['新品、未使用', 1], ['未使用に近い', 2],['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4],['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], { include_blank: "選択してください"}
-              -# = f.select :name, ['太郎','二郎'], { include_blank: true, selected: 1 }, { id: "item_id", class: "user_class" }
-
-              -# %select{name: "condition"}
-              -#   %option{value:  ""} 選択してください
-              -#   %option{value:  "新品、未使用"} 新品、未使用
-              -#   %option{value:  "未使用に近い"} 未使用に近い
-              -#   %option{value:  "目立った傷や汚れなし"} 目立った傷や汚れなし
-              -#   %option{value:  "やや傷や汚れあり"} やや傷や汚れあり
-              -#   %option{value:  "傷や汚れあり"} 傷や汚れあり
-              -#   %option{value:  "全体的に状態が悪い"} 全体的に状態が悪い
           .item_size_box_square
             .text_form
               %a.label
@@ -126,7 +94,15 @@
                 必須
             .item_size_box_square_input
               .item_condition_box_square_input
-                = f.select :size, [['指定なし', 1], ['XL', 2],['L', 3], ['M', 4], ['S', 5]], { include_blank: "選択してください"}  
+                = f.select :size, [['指定なし', 1], ['XL', 2],['L', 3], ['M', 4], ['S', 5]], { include_blank: "選択してください"}        
+          .item_condition_box_square
+            .text_form
+              %a.label
+                商品の状態
+              %span.require
+                必須
+            .item_condition_box_square_input
+              = f.select :condition, [['新品、未使用', 1], ['未使用に近い', 2],['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4],['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], { include_blank: "選択してください"}
         .shipping_item_box
           %p.text_item_new
             発送について
@@ -145,11 +121,7 @@
               %span.require
                 必須
             .item_postage_payers_box_square__input
-              = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, prompt: "選択してください", class: 'input'
-              -# %select{name: "postage_payers"}
-              -#   %option{value: ""} 選択してください
-              -#   %option{value: "送料込み(出品者負担)"} 送料込み(出品者負担)
-              -#   %option{value: "着払い(購入者負担)"} 着払い(購入者負担)   
+              = f.collection_select :preparation_day_id, PreparationDay.all, :id, :name, prompt: "選択してください", class: 'input'
             .item_preparation_days_box_square
               .text_form
                 %a.label
@@ -158,11 +130,6 @@
                   必須
               .item_preparation_days_box_square_input
                 = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, prompt: "選択してください", class: 'input'
-                -# %select{name:  "preparation_days"}
-                -#   %option{value:  ""} 選択してください
-                -#   %option{value:  "1~2日で発送"} 1~2日で発送
-                -#   %option{valu:  "2~3日で発送"} 2~3日で発送
-                -#   %option{value:  "4~7日で発送"} 4~7日で発送
         .item_price-box
           %a.exhibition-item_price
             価格（¥300〜9,999,999）
@@ -176,12 +143,11 @@
               = f.text_field :price, class: "price_input"
         .item_exhibition_box
           .item_exhibition_box__input
-            %form.new.exhibition
+            -# %form.new.exhibition
             .btn-box
               = f.submit '出品する', class: "submit-btn-red"
-              -# %input{type: "submit", value: "出品する", class: "submit-btn-red"}
             .btn-box
-              %input{type: "submit", value: "下書きに保存", class: "submit-btn-white"}
+              -# %input{type: "submit", value: "下書きに保存", class: "submit-btn-white"}
             .return-btn   
               = link_to "もどる", '#'         
   .footer-containar
