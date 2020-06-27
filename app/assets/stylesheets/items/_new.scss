@@ -12,9 +12,9 @@
 
 .item_image_box{
   padding: 40px 40px 0 40px;
+  width: 100%;
   #dragDropArea{
     background-color: #f4f4f4;
-    margin: 10px;
     padding: 50px 10px;
     border: #ddd dashed 1px;
     border-radius: 4px;
@@ -49,7 +49,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   height: 44px;
-  width: 588px;
+  width: 100%;
   padding: 0px 14px;
 }
 
@@ -57,7 +57,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   height: 150px;
-  width: 588px;
+  width: 100%;
   padding: 15px 14px;
 }    
   
@@ -83,9 +83,33 @@
 }  
 
 .item_price-box{
-  height: 180px;
-  padding: 40px 40px 0px 40px;
+  padding: 0 40px 40px;
+  height: 140px;
+  .price_form{
+    line-height: 44px;
+    margin-top: 20px;
+    &__left_box{
+      float: left;
+    }
+    &__right_box{
+      float: right;
+    }
+  }
 }
+
+.price_input{
+  height: 44px;
+  width: 350px;
+  margin-right: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.exhibition-item_price{
+  font-size: 14px;
+  color: darkgray;
+  
+}
+
 
 .item_exhibition_box{
   height: 170px;
@@ -141,7 +165,7 @@ select{
   font-weight: bold;
   padding: 2px 4px;
   border: 1px solid #fff;
-  background: #ea352d;
+  background: #3CCACE;
   color: #fff;
 }
 
@@ -160,6 +184,10 @@ select{
   height: 44px;
   width: 360px;
   text-align: center;
+  a{
+    text-decoration: none;
+    color: #3CCACE;
+  }
 }  
 
 .text_item_new{
@@ -171,4 +199,5 @@ select{
 .text_item_bow{
   font-size: 14px;
   color: darkgray;
+
 }

@@ -1,13 +1,13 @@
 .form
   = form_for @item do |f|
     -# = f.text_field :name
-    = f.text_field :introduction
-    = f.text_field :size
-    = f.text_field :condition
-    = f.text_field :price
-    = f.select :name, ['太郎','二郎'], { include_blank: true, selected: 1 }, { id: "item_id", class: "user_class" }
+    -# = f.text_field :introduction
+    -# = f.text_field :size
+    -# = f.text_field :condition
+    -# = f.text_field :price
+    -# = f.select :name, ['太郎','二郎'], { include_blank: true, selected: 1 }, { id: "item_id", class: "user_class" }
    
-    = f.submit '送信'
+    -# = f.submit '送信'
 
 
 .main-containar
@@ -107,7 +107,7 @@
                 必須
             .item_size_box_square_input
               .item_condition_box_square_input
-                = f.select :size, [['指定なし', 1], ['S', 2],['M', 3], ['XL', 4]], { include_blank: "選択してください"}  
+                = f.select :size, [['指定なし', 1], ['XL', 2],['L', 3], ['M', 4], ['S', 5]], { include_blank: "選択してください"}  
         .shipping_item_box
           %p.text_item_new
             発送について    
@@ -135,19 +135,22 @@
                   %option{valu:  "2~3日で発送"} 2~3日で発送
                   %option{value:  "4~7日で発送"} 4~7日で発送
         .item_price-box
-          .item_price-box_square
-            %a.exhibition-item_price
-              価格（¥300〜9,999,999）
-            .text_form
+          %a.exhibition-item_price
+            価格（¥300〜9,999,999）
+          .price_form
+            .price_form__left_box
               %a.label
                 販売価格
               %span.require
                 必須
+            .price_form__right_box
+              = f.text_field :price, class: "price_input"
         .item_exhibition_box
           .item_exhibition_box__input
             %form.new.exhibition
             .btn-box
-              %input{type: "submit", value: "出品する", class: "submit-btn-red"}
+              = f.submit '出品する', class: "submit-btn-red"
+              -# %input{type: "submit", value: "出品する", class: "submit-btn-red"}
             .btn-box
               %input{type: "submit", value: "下書きに保存", class: "submit-btn-white"}
             .return-btn   
