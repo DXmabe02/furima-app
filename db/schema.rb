@@ -64,15 +64,17 @@ ActiveRecord::Schema.define(version: 20200619113051) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                    null: false
-    t.text     "introduction",  limit: 65535,             null: false
-    t.integer  "price",                                   null: false
-    t.integer  "size",                                    null: false
-    t.integer  "condition",                   default: 0, null: false
+    t.string   "name",                                         null: false
+    t.text     "introduction",       limit: 65535,             null: false
+    t.integer  "price",                                        null: false
+    t.integer  "size",                                         null: false
+    t.integer  "condition",                        default: 0, null: false
     t.integer  "buyer"
-    t.integer  "prefecture_id",                           null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.integer  "prefecture_id",                                null: false
+    t.integer  "preparation_day_id",                           null: false
+    t.integer  "postage_payer_id",                             null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "postage_payers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -89,8 +91,11 @@ ActiveRecord::Schema.define(version: 20200619113051) do
   end
 
   create_table "preparation_days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "preparation_day", null: false
+    t.integer  "item_id",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["item_id"], name: "index_preparation_days_on_item_id", using: :btree
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -146,6 +151,7 @@ ActiveRecord::Schema.define(version: 20200619113051) do
   add_foreign_key "favorites", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "postage_payers", "items"
+  add_foreign_key "preparation_days", "items"
   add_foreign_key "profiles", "users"
   add_foreign_key "sending_destinations", "users"
 end
