@@ -178,14 +178,12 @@
           .item_exhibition_box__input
             %form.new.exhibition
             .btn-box
-              -# = f.submit '出品する', class: "submit-btn-red"
+              = f.submit '出品する', class: "submit-btn-red"
               -# %input{type: "submit", value: "出品する", class: "submit-btn-red"}
             .btn-box
               %input{type: "submit", value: "下書きに保存", class: "submit-btn-white"}
             .return-btn   
-              = link_to "もどる", '#'
-        .btn-box
-          = f.submit '出品する', class: "submit-btn-red"          
+              = link_to "もどる", '#'         
   .footer-containar
     .footer-containar__info
       %p.footer-containar__info__text
