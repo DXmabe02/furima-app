@@ -11,8 +11,8 @@
       = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, prompt: "選択してください", class: 'input'
       = f.text_field :name, class: "input-box_item_name", placeholder: "40文字まで"
       = f.text_area :introduction, class: "input-box_explanation", placeholder: "商品の説明(必須1,000文字以内)(色、素材、重さ、定価、注意点など)商品の説明(必須 1,000文字以内)(色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 "
-      = f.select :condition, [['新品、未使用', 1], ['未使用に近い', 2],['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4],['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], { include_blank: "選択してください"}
-      = f.select :size, [['指定なし', 1], ['XL', 2],['L', 3], ['M', 4], ['S', 5]], { include_blank: "選択してください"}  
+      = f.select :condition, ['新品、未使用', '未使用に近い','目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い'], { include_blank: "選択してください"}
+      = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
       = f.text_field :price, class: "price_input"       
       = f.fields_for :item_images do |i|
         = i.file_field :image
@@ -34,15 +34,17 @@
               必須
             %p.text_item_bow 最大10枚までアップロードできます
           .item_image_box__input
-            %form{enctype:  "multipart/form-data", method: "post"}
-              #dragDropArea
-                .drag-drop-inside
-                  = icon('fas', 'camera', class: 'icon')
-                  %p.drag-drop-info ドラッグアンドドロップ
-                  %p.drag-drop-info またはクリックしてファイルをアップロード
-                  %p.drag-drop-buttons
-                    %input#fileInput{accept: "image/*", name: "photo", onchange: "photoPreview(event)", type: "file", value: "ファイルを選択"}
-                  #previewArea
+            = f.fields_for :item_images do |i|
+              = i.file_field :image
+            -# %form{enctype:  "multipart/form-data", method: "post"}
+            -#   #dragDropArea
+            -#     .drag-drop-inside
+            -#       = icon('fas', 'camera', class: 'icon')
+            -#       %p.drag-drop-info ドラッグアンドドロップ
+            -#       %p.drag-drop-info またはクリックしてファイルをアップロード
+            -#       %p.drag-drop-buttons
+            -#         %input#fileInput{accept: "image/*", name: "photo", onchange: "photoPreview(event)", type: "file", value: "ファイルを選択"}
+            -#       #previewArea
         .item_name_box        
           .item_name_box__square    
             .text_form  
@@ -97,7 +99,7 @@
                 必須
             .item_size_box_square_input
               .item_condition_box_square_input
-                = f.select :size, [['指定なし', 1], ['XL', 2],['L', 3], ['M', 4], ['S', 5]], { include_blank: "選択してください"}        
+                = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
           .item_condition_box_square
             .text_form
               %a.label
@@ -105,7 +107,7 @@
               %span.require
                 必須
             .item_condition_box_square_input
-              = f.select :condition, [['新品、未使用', 1], ['未使用に近い', 2],['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4],['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], { include_blank: "選択してください"}
+              = f.select :condition, ['新品、未使用', '未使用に近い','目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い'], { include_blank: "選択してください"}
         .shipping_item_box
           %p.text_item_new
             発送について

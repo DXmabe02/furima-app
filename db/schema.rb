@@ -64,17 +64,17 @@ ActiveRecord::Schema.define(version: 20200619113051) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                         null: false
-    t.text     "introduction",       limit: 65535,             null: false
-    t.integer  "price",                                        null: false
-    t.integer  "size",                                         null: false
-    t.integer  "condition",                        default: 0, null: false
+    t.string   "name",                             null: false
+    t.text     "introduction",       limit: 65535, null: false
+    t.integer  "price",                            null: false
+    t.string   "size",                             null: false
+    t.string   "condition",                        null: false
     t.integer  "buyer"
-    t.integer  "prefecture_id",                                null: false
-    t.integer  "preparation_day_id",                           null: false
-    t.integer  "postage_payer_id",                             null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.integer  "prefecture_id",                    null: false
+    t.integer  "preparation_day_id",               null: false
+    t.integer  "postage_payer_id",                 null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "postage_payers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
