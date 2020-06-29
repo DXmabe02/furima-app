@@ -18,8 +18,8 @@
     -# = f.select :name, ['太郎','二郎'], { include_blank: true, selected: 1 }, { id: "item_id", class: "user_class" }
 .main-containar
   .header-containar
-    = link_to "#", class: "header-containar__link" do
-      = image_tag "/assets/material/logo/logo.png", class: "header-containar__link__logo-img", alt: "FURIMA logo"
+    = link_to "/", class: "header-containar__link" do
+      = image_tag "material/logo/logo.png", class: "header-containar__link__logo-img", alt: "FURIMA logo"
   .item_contents
     = form_for @item do |f|
       .item_contents__box
@@ -158,7 +158,7 @@
         フリマ用規約
       %p.footer-containar__info__text
         特定商取引に関する表記
-    = link_to "#", clas: "footer-containar__link" do
-      = image_tag "/assets/material/logo/logo-white.png", class: "footer-containar__link__logo-img", alt: "FURIMA logo-white"
+    = link_to "/", clas: "footer-containar__link" do
+      = image_tag "material/logo/logo-white.png", class: "footer-containar__link__logo-img", alt: "FURIMA logo-white"
     %p.footer-containar__inc
-      © Furima, Inc.        
+      © Furima, Inc.
