@@ -18,13 +18,13 @@
         .js-file_group{"data-index" => "#{image.index}"}
           = image.file_field :image, class: 'js-file'
           %br/
-          -# %span.js-remove 削除
-
+          %span.js-remove 削除
       = f.submit '出品する', class: "submit-btn-red"
 
 
       -# = f.fields_for :item_images do |i|
       -#   = i.file_field :image
+
 .main-containar
   .header-containar
     = link_to "/", class: "header-containar__link" do

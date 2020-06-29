@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     # レイヤーを変更
-    # render layout: "nothing"
+    render layout: "nothing"
     @item.item_images.new
   end
 
