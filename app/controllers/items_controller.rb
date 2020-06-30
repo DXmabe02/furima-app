@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
 
   def index
     @new = Item.includes(:item_images).order('created_at DESC')
+    #売れてない商品だけ@productsに格納する
+    @products = Item.where(deal_state: 0).order(created_at: :DESC)
+    @images = ItemImage.all
   end
 
   def new
@@ -22,6 +25,7 @@ class ItemsController < ApplicationController
   else
     # セレクトボックスの中身を取得
       render :new
+    
   end
 
   def show
