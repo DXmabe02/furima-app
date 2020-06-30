@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   def create
     # binding.pry
     @item = Item.new(item_params)
+    # @item_image = ItemImage.new(item:image, item_id:)
     # イメージが存在しない時は登録させない
     if item_params[:item_images_attributes] && @item.save!
     redirect_to root_path
