@@ -6,9 +6,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.item_images.build
     # レイヤーを変更
-    render layout: "nothing"
-    @item.item_images.new
+    # render layout: "nothing"
   end
 
   def show
@@ -23,18 +23,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # Item.create(item_params)
-    # if @item.save
-    #   redirect_to root_path
-    # else
-    #   render :new
-    # end
     @item = Item.new(item_params)
-  if @item.save
+    @item.save
     redirect_to root_path
-  else
-    render :new
-  end
+  # else
+  #   render :new
+  # end
 end
 
 

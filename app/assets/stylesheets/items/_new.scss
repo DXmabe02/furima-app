@@ -12,8 +12,10 @@
 
 .item_image_box{
   padding: 40px 40px 0 40px;
+  height: 320px;
   width: 100%;
   #dragDropArea{
+    height: 100%;
     background-color: #f4f4f4;
     padding: 50px 10px;
     border: #ddd dashed 1px;
@@ -33,6 +35,12 @@
   }  
   &__input{
     height: 150px;
+  }
+}
+.drag-drop-inside{
+  height: 20%;
+  &__inner{
+    display: flex;
   }
 }
 
@@ -212,4 +220,95 @@ select{
   font-size: 14px;
   color: darkgray;
 
+}
+
+
+//image投稿欄のCSS
+.post__drop__box__container{
+  display: block;
+  margin: 16px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 40px 0 40px;
+  width: 100%;
+
+  //プレビュー表示欄のCSS
+  .prev-content {
+    display: flex;
+    .preview-box {
+      height: 162px;
+      width: 112px;
+      margin: 0 15px 10px 0;
+      .upper-box {
+        height: 112px;
+        width: 100%;
+        img{
+          width: 112px;
+          height: 112px;
+        }
+      }
+      .lower-box {
+        display: flex;
+        text-align: center;
+        .update-box {
+          color: #00b0ff;
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+        .delete-box {
+          color: #00b0ff;
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  //投稿クリックエリアのCSS
+  .label-content{
+    margin-bottom: 10px;
+    width: 620px;
+    .label-box {
+      display: block;
+      border: 1px dashed #ccc;
+      position: relative;
+      background: #f5f5f5;
+      width: 100%;
+      height: 162px;
+      cursor: pointer;
+      &__text-visible {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  //file_fieldのcss
+  .hidden-content {
+    .hidden-field {
+      display: none;
+    }
+    .hidden-checkbox {
+      display: none;
+    }
+  }
 }
