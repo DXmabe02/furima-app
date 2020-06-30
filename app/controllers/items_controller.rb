@@ -11,6 +11,18 @@ class ItemsController < ApplicationController
     # render layout: "nothing"
   end
 
+
+  def create
+    # binding.pry
+    @item = Item.new(item_params)
+    # イメージが存在しない時は登録させない
+    if item_params[:item_images_attributes] && @item.save!
+    redirect_to root_path
+  else
+    # セレクトボックスの中身を取得
+      render :new
+  end
+
   def show
     @item = Item.new
   end
@@ -22,13 +34,6 @@ class ItemsController < ApplicationController
     render layout: "nothing"
   end
 
-  def create
-    @item = Item.new(item_params)
-    @item.save
-    redirect_to root_path
-  # else
-  #   render :new
-  # end
 end
 
 
