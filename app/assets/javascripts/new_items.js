@@ -1,10 +1,11 @@
 $(document).on('turbolinks:load', ()=> {
+  console.log('hoge');
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="js-file" type="file"
-                    name="item[item_images_attributes][${index}][src]"
-                    id="item_images_attributes_${index}_src"><br>
+                    name="item[item_images_attributes][${index}][image]"
+                    id="item_images_attributes_${index}_image"><br>
                     <div class="js-remove">削除</div>
                   </div>`;
     return html;
@@ -14,6 +15,7 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
   $('#image-box').on('change', '.js-file', function(e) {
+    console.log('hoge');
     // fileIndexの先頭の数字を使ってinputを作る
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
@@ -22,6 +24,7 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#image-box').on('click', '.js-remove', function() {
+    console.log('hoge');
     $(this).parent().remove();
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
