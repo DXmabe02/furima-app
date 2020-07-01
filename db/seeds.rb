@@ -15,3 +15,4 @@ table_names.each do |table_name|
     require path
   end
 end
+

@@ -3,13 +3,13 @@ class ItemsController < ApplicationController
   def index
     @new = Item.includes(:item_images).order('created_at DESC')
     #売れてない商品だけ@productsに格納する
-    @products = Item.where(deal_state: 0).order(created_at: :DESC)
-    @images = ItemImage.all
+    # @products = Item.where(deal_state: 0).order(created_at: :DESC)
+    # @images = ItemImage.all
   end
 
   def new
     @item = Item.new
-    @item.item_images.build
+    @item_images = @item.item_images.build
     # レイヤーを変更
     # render layout: "nothing"
   end
@@ -18,13 +18,14 @@ class ItemsController < ApplicationController
   def create
     # binding.pry
     @item = Item.new(item_params)
+    @item.save
     # @item_image = ItemImage.new(item:image, item_id:)
     # イメージが存在しない時は登録させない
-    if item_params[:item_images_attributes] && @item.save!
+  #   if item_params[:item_images_attributes] && @item.save!
     redirect_to root_path
-  else
-    # セレクトボックスの中身を取得
-      render :new
+  # else
+  #   # セレクトボックスの中身を取得
+  #     render :new
     
   end
 
@@ -46,7 +47,4 @@ end
   def item_params
     params.require(:item).permit(:name, :introduction, :condition, :price, :size, :prefecture_id, :preparation_day_id, :postage_payer_id, item_images_attributes: [:image])
     # params.require(:item).permit(:prefecture_id, :preparation_day_id, :postage_payer_id)
-
-  end
-
 end
