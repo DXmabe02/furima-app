@@ -90,7 +90,8 @@
                 必須
             .item_size_box_square_input
               .item_condition_box_square_input
-                = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
+                = f.select :condition, [["指定なし", "指定なし"], ["XL", "XL"],  ["L", "L"], ["M", "M"],["S", "S"]],  :prompt => "選択してください"
+                -# = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
           .item_condition_box_square
             .text_form
               %a.label
@@ -98,7 +99,7 @@
               %span.require
                 必須
             .item_condition_box_square_input
-              = f.select :condition, ['新品、未使用', '未使用に近い','目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い', { include_blank: "選択してください"}]  
+              = f.select :condition, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"],  ["目立った傷や汚れなし", "目立った傷や汚れなし"], ["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"] ,["全体的に状態が悪い", "全体的に状態が悪い"]],  :prompt => "選択してください"
         .shipping_item_box
           %p.text_item_new
             発送について
@@ -160,34 +161,34 @@
       © Furima, Inc.
 
 
--# .item_shipping_origin_box_square
--#   .text_form
--#     %a.label
--#       発送元の地域
--#     %span.require
--#       必須
--#   .item_shipping_origin_box_square_input
--#     = form_for @item do |f|
--#       = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
--#       = f.collection_select :preparation_day_id, PreparationDay.all, :id, :name, prompt: "選択してください", class: 'input'
--#       = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, prompt: "選択してください", class: 'input'
--#       = f.text_field :name, class: "input-box_item_name", placeholder: "40文字まで"
--#       = f.text_area :introduction, class: "input-box_explanation", placeholder: "商品の説明(必須1,000文字以内)(色、素材、重さ、定価、注意点など)商品の説明(必須 1,000文字以内)(色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 "
--#       = f.select :condition, ['新品、未使用', '未使用に近い','目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い', { include_blank: "選択してください"}]
--#       = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
--#       = f.text_field :price, class: "price_input"
--#       .post__drop__box__container
--#         .prev-content
--#         .label-content
--#           %label{for: "item_images_attributes_0_image", class: "abel-box", id: "label-box--0"}
--#             %pre.label-box__text-visible クリックしてファイルをアップロード
--#         .hidden-content
--#           = f.fields_for :item_images do |i|
--#             = i.file_field :image, class: "hidden-field"
--#             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_attributes_1_image" }
--#             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_attributes_2_image" }
--#             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_attributes_3_image" }
--#             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }      
--#         .sell__block__form__btn
--#           %div
--#             = f.submit "出品する",class: "btn-default__btn-red"
+.item_shipping_origin_box_square
+  .text_form
+    %a.label
+      発送元の地域
+    %span.require
+      必須
+  .item_shipping_origin_box_square_input
+    = form_for @item do |f|
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+      = f.collection_select :preparation_day_id, PreparationDay.all, :id, :name, prompt: "選択してください", class: 'input'
+      = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, prompt: "選択してください", class: 'input'
+      = f.text_field :name, class: "input-box_item_name", placeholder: "40文字まで"
+      = f.text_area :introduction, class: "input-box_explanation", placeholder: "商品の説明(必須1,000文字以内)(色、素材、重さ、定価、注意点など)商品の説明(必須 1,000文字以内)(色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 "
+      = f.select :condition, ['新品、未使用', '未使用に近い','目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い', { include_blank: "選択してください"}]
+      = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
+      = f.text_field :price, class: "price_input"
+      .post__drop__box__container
+        .prev-content
+        .label-content
+          %label{for: "item_images_attributes_0_image", class: "abel-box", id: "label-box--0"}
+            %pre.label-box__text-visible クリックしてファイルをアップロード
+        .hidden-content
+          = f.fields_for :item_images do |i|
+            = i.file_field :image, class: "hidden-field"
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_attributes_1_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_attributes_2_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_attributes_3_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }      
+        .sell__block__form__btn
+          %div
+            = f.submit "出品する",class: "btn-default__btn-red"

@@ -3,13 +3,11 @@ class ItemsController < ApplicationController
   def index
     @new = Item.includes(:item_images).order('created_at DESC')
     #売れてない商品だけ@productsに格納する
-    # @products = Item.where(deal_state: 0).order(created_at: :DESC)
-    # @images = ItemImage.all
+    @item_images = ItemImage.all
   end
 
   def new
     @item = Item.new
-    @item_images = @item.item_images.build
     # レイヤーを変更
     # render layout: "nothing"
   end
@@ -19,7 +17,6 @@ class ItemsController < ApplicationController
     # binding.pry
     @item = Item.new(item_params)
     @item.save
-    # @item_image = ItemImage.new(item:image, item_id:)
     # イメージが存在しない時は登録させない
   #   if item_params[:item_images_attributes] && @item.save!
     redirect_to root_path
