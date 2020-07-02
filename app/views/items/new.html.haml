@@ -1,3 +1,8 @@
+= form_tag(url_for(:action => 'index'), :remote => true) do
+  = text_field_tag :title
+  ↑↑↑追加する↑↑↑
+  \#{submit_tag "タイトルを変更する"}
+
 .main-containar
   .header-containar
     = link_to "/", class: "header-containar__link" do
@@ -6,25 +11,49 @@
     = form_for @item do |f|
       .item_contents__box
         .item_image_box
-          .item_image_box__form
-            %a.label
-              出品画像
-            %span.require 
-              必須
-          .item_image_box__input            
-            %p.text_item_bow 最大4枚までアップロードできます
-            .post__drop__box__container
-              .prev-content
-              .label-content
-                %label{for: "item_images_attributes_0_image", class: "abel-box", id: "label-box--0"}
-                  %pre.label-box__text-visible クリックしてファイルをアップロード
-              .hidden-content
-                = f.fields_for :item_images do |i|
-                  = i.file_field :image, class: "hidden-field"
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-                  %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-                  -# %input#fileInput{accept: "image/*", name: "photo", onchange: "photoPreview(event)", type: "file", value: "ファイルを選択"}
+          .item_image_form
+            商品名#{f.text_field :name}
+            %br/
+            価格#{f.number_field :price}
+            %br/
+            #image-box
+              #previews
+                - if @item.persisted?
+                  - @item.item_images.each_with_index do |image, i|
+                    = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+              = f.fields_for :images do |image|
+                .js-file_group{"data-index" => "#{image.index}"}
+                  = image.file_field :image, class: 'js-file'
+                  %br/
+                  %span.js-remove 削除
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .js-file_group{"data-index" => "#{@item.item_images.count}"}
+                  = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][src]", class: 'js-file'
+                  .js-remove 削除
+            = f.submit
+
+          -# .item_image_box__form
+          -#   %a.label
+          -#     出品画像
+          -#   %span.require 
+          -#     必須
+          -# .item_image_box__input            
+          -#   %p.text_item_bow 最大4枚までアップロードできます
+          -#   .post__drop__box__container
+          -#     .prev-content
+          -#     .label-content
+          -#       %label{for: "item_images_attributes_0_image", class: "abel-box", id: "label-box--0"}
+          -#         %pre.label-box__text-visible クリックしてファイルをアップロード
+          -#     .hidden-content
+          -#       = f.fields_for :item_images do |i|
+          -#         = i.file_field :image, class: "hidden-field"
+          -#         %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+          -#         %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+          -#         %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+          -#         -# %input#fileInput{accept: "image/*", name: "photo", onchange: "photoPreview(event)", type: "file", value: "ファイルを選択"}
+              
               -#                %form{enctype:  "multipart/form-data", method: "post"}
                   -# #previewArea
               -# #dragDropArea
@@ -90,7 +119,7 @@
                 必須
             .item_size_box_square_input
               .item_condition_box_square_input
-                = f.select :condition, [["指定なし", "指定なし"], ["XL", "XL"],  ["L", "L"], ["M", "M"],["S", "S"]],  :prompt => "選択してください"
+                = f.select :size, [["指定なし", "指定なし"], ["XL", "XL"],  ["L", "L"], ["M", "M"],["S", "S"]],  :prompt => "選択してください"
                 -# = f.select :size, ['指定なし', 'XL','L', 'M', 'S', { include_blank: "選択してください"}]  
           .item_condition_box_square
             .text_form
