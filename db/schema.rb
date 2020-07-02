@@ -71,11 +71,13 @@ ActiveRecord::Schema.define(version: 20200619113051) do
     t.string   "size",                             null: false
     t.string   "condition",                        null: false
     t.integer  "buyer"
+    t.integer  "category_id",                      null: false
     t.integer  "prefecture_id",                    null: false
     t.integer  "preparation_day_id",               null: false
     t.integer  "postage_payer_id",                 null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
 
   create_table "postage_payers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(version: 20200619113051) do
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "postage_payers", "items"
   add_foreign_key "preparation_days", "items"
   add_foreign_key "profiles", "users"
