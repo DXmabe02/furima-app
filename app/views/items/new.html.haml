@@ -109,14 +109,16 @@
                 %option{valu:  "2~3日で発送"} 2~3日で発送
                 %option{value:  "4~7日で発送"} 4~7日で発送
       .item_price-box
-        .item_price-box_square
-          %a.exhibition-item_price
-            価格（¥300〜9,999,999）
-          .text_form
+        %a.exhibition-item_price
+          価格（¥300〜9,999,999）
+        .price_form
+          .price_form__left_box
             %a.label
               販売価格
             %span.require
               必須
+          .price_form__right_box
+            %input{type: "number", class: "price_input"}
       .item_exhibition_box
         .item_exhibition_box__input
           %form.new.exhibition

@@ -87,6 +87,34 @@
   padding: 40px 40px 0px 40px;
 }
 
+.item_price-box{
+  padding: 0 40px 40px;
+  height: 140px;
+  .price_form{
+    line-height: 44px;
+    margin-top: 20px;
+    &__left_box{
+      float: left;
+    }
+    &__right_box{
+      float: right;
+    }
+  }
+}
+
+.price_input{
+  height: 44px;
+  width: 350px;
+  margin-right: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.exhibition-item_price{
+  font-size: 14px;
+  color: darkgray;
+  
+}
+
 .item_exhibition_box{
   height: 170px;
   padding: 0 160px;
