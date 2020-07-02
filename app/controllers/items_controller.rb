@@ -9,11 +9,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     #セレクトボックスの初期値設定
-    @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
     # レイヤーを変更
     # render layout: "nothing"
   end
@@ -43,13 +38,13 @@ class ItemsController < ApplicationController
 
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find(params[:parent_name]).children
   end
 end
 
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :price, :size, :category, :prefecture_id, :preparation_day_id, :postage_payer_id, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :introduction, :condition, :price, :size, :category_id, :prefecture_id, :preparation_day_id, :postage_payer_id, item_images_attributes: [:image])
     # params.require(:item).permit(:prefecture_id, :preparation_day_id, :postage_payer_id)
   end
