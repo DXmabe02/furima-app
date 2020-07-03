@@ -108,11 +108,13 @@
               %span.require_brand
                 任意
             .item_brand_box_square_input  
-              %select{name: "brand"}
-                %option{value: ""} 選択してください
-                %option{value: "シャネル"} シャネル
-                %option{value: "ヴィトン"} ヴィトン
-                %option{value: "エルメス"} エルメス
+              = f.fields_for :brands do |f|
+                = f.collection_select :brand_id, Brand.all, :id, :name, prompt:"選択してください"
+              -# %select{name: "brand"}
+              -#   %option{value: ""} 選択してください
+              -#   %option{value: "シャネル"} シャネル
+              -#   %option{value: "ヴィトン"} ヴィトン
+              -#   %option{value: "エルメス"} エルメス
           .item_size_box_square
             .text_form
               %a.label

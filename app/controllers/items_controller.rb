@@ -45,6 +45,6 @@ end
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :price, :size, :category_id, :prefecture_id, :preparation_day_id, :postage_payer_id, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :introduction, :condition, :price, :size, :category_id, :brand_id, :prefecture_id, :preparation_day_id, :postage_payer_id, item_images_attributes: [:image])
     # params.require(:item).permit(:prefecture_id, :preparation_day_id, :postage_payer_id)
   end
